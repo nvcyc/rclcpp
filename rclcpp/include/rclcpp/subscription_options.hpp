@@ -92,12 +92,12 @@ struct SubscriptionOptionsBase
 
   /// Acceptable buffer backend names for this subscription.
   /**
-   * Empty string means all installed backends are acceptable (default).
-   * "cpu" restricts to CPU-backed buffers only (e.g. for serialized-only subscribers).
-   * Comma-separated for multiple backends, e.g. "cuda,demo".
+   * Empty string or "cpu" means CPU-only (default for backward compatibility).
+   * "any" means all installed backends are acceptable.
+   * Comma-separated for specific backends, e.g. "cuda,demo".
    * CPU is always implicitly acceptable regardless of this value.
    */
-  std::string acceptable_buffer_backends;
+  std::string acceptable_buffer_backends{"cpu"};
 };
 
 /// Structure containing optional configuration for Subscriptions.
